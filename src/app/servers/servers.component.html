@@ -1,5 +1,18 @@
+<label for="username">Username</label> : {{username}}
+<input type="text" class="form-control" id="username" [(ngModel)]="username" (input)="verifyButton()">
+<button
+  class="btn btn-primary"
+  [disabled]="!allowClickButton"
+  (click)="resetUsername()">Reset username</button>
+<hr>
+<br>
+<label for="serverName">Server Name</label><!--: {{serverName}}-->
+<!--<input id="serverName" type="text" class="form-control" (input)="onUpdateServerName($event)">-->
+<input id="serverName" type="text" class="form-control" [(ngModel)]="serverName">
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()">Add new server</button>
+<h4>{{serverCreationStatus}}</h4>
+<hr>
 <app-server></app-server>
-<hr>
-<app-successalert></app-successalert>
-<hr>
-<app-warningalert></app-warningalert>
