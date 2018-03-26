@@ -3,7 +3,8 @@
 <button
   class="btn btn-primary"
   [disabled]="!allowClickButton"
-  (click)="resetUsername()">Reset username</button>
+  (click)="resetUsername()">Reset username
+</button>
 <hr>
 <br>
 <label for="serverName">Server Name</label><!--: {{serverName}}-->
@@ -12,7 +13,25 @@
 <button
   class="btn btn-primary"
   [disabled]="!allowNewServer"
-  (click)="onCreateServer()">Add new server</button>
-<h4>{{serverCreationStatus}}</h4>
+  (click)="onCreateServer()">Add new server
+</button>
+<!--<h4>{{serverCreationStatus}}</h4>-->
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p>
+<ng-template #noServer>
+  <p>No server was created!</p>
+</ng-template>
 <hr>
-<app-server></app-server>
+<app-server *ngFor="let server of servers"></app-server>
+<hr>
+<br>
+<!--<button-->
+<!--class="btn btn-success" (click)="showSecret = !showSecret">Display Details</button>-->
+<button
+  class="btn btn-success" (click)="onToggleDetails()">Display Details
+</button>
+<p *ngIf="showSecret">Secret Password: SUU WHOOP</p>
+<div
+  *ngFor="let logItem of log"
+  [ngStyle]="{backgroundColor: logItem >= 5 ? 'blue' : 'transparent'}"
+  [ngClass]="{'white-text': logItem >= 5}"
+  >{{ logItem }}</div>

@@ -11,6 +11,10 @@ export class ServersComponent implements OnInit {
   username = '';
   serverCreationStatus = 'No server was created!';
   allowClickButton = false;
+  serverCreated = false;
+  servers = ['suu whoop server', 'og server'];
+  showSecret = false;
+  log = [];
 
   constructor() {
     // () => {} es lo mismo que function(){}
@@ -22,7 +26,14 @@ export class ServersComponent implements OnInit {
   ngOnInit() {
   }
 
+  onToggleDetails() {
+    this.showSecret = !this.showSecret;
+    this.log.push(this.log.length + 1);
+  }
+
   onCreateServer() {
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
     this.serverCreationStatus = 'Server was created! The name is: ' + this.serverName;
   }
 
